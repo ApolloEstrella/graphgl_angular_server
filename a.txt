@@ -1,0 +1,97 @@
+mysql syntax for foreign key
+
+CREATE TABLE user ( id INT NOT NULL, name varchar(100) NOT NULL, PRIMARY KEY (id) ) ENGINE=INNODB
+
+
+CREATE TABLE post ( id INT NOT NULL, user_id INT, text varchar(100) NOT NULL, PRIMARY KEY(id),
+INDEX fk_user_id (user_id), FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ) ENGINE=INNODB
+
+npx ts-node index.ts
+
+const { GraphQLServer } = require('graphql-yoga')
+
+const typeDefs = `
+type Query {
+  dogName: String!
+}
+`
+
+const resolvers = {
+  Query: {
+    dogName: () => `Tommy the chihuahua`,
+  },
+}
+
+const server = new GraphQLServer({
+  typeDefs,
+  resolvers,
+})
+server.start(() => console.log(`Server address: http://localhost:4000`))
+
+
+
+import { GraphQLServer } from 'graphql-yoga'
+import { schema } from './prisma/Studio/-TestProjects-Graphql-g05server'
+import { createContext } from './context/context'
+
+new GraphQLServer({ schema, context: createContext }).start(() =>
+  console.log(
+    `🚀 Server ready at: http://localhost:4000\n⭐️ See sample queries: http://pris.ly/e/ts/graphql#using-the-graphql-api`,
+  ),
+)
+
+
+
+graphql-nexus like prisma translator
+
+INSERT INTO `user`(`id`, `name`) VALUES (1,'Charles Xavier');
+INSERT INTO `user`(`id`, `name`) VALUES (2,'Steve Rogers');
+INSERT INTO `user`(`id`, `name`) VALUES (3,'Bruce Wayne');
+INSERT INTO `user`(`id`, `name`) VALUES (4,'Peter Parker');
+INSERT INTO `user`(`id`, `name`) VALUES (5,'Marc Logan');
+
+
+if there are changes in the mysql db type use this command.
+
+npx prisma introspect
+npx prisma generate
+
+
+const { GraphQLServer } = require('graphql-yoga')
+
+const typeDefs = `
+  type Query {
+    hello: String!
+  }
+`
+
+const resolvers = {
+  Query: {
+    hello: (root, args, context, info) => 'Hello  World',
+  },
+}
+
+const server = new GraphQLServer({ typeDefs, resolvers })
+server.start() // defaults to port 4000
+
+
+ALTER TABLE `user` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
+
+
+ALTER TABLE post DROP FOREIGN KEY post_ibfk_1
+
+fk_user_id
+
+
+ALTER TABLE post ADD INDEX fk_user_id (user_id), ADD FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE 
+
+$2b$10$kLsOTENu2EqpumIFEIpPGuSXqQ9Ejt2yG8fhn3H6Tg/JGOSD0uIu.
+
+https://www.youtube.com/watch?v=5fNlrEDolko
+
+
+https://www.youtube.com/watch?v=-n30pzgnkW0&list=PLs2PzMqLzi7Xmx44xTLfOBCwCAxVgQvE_
+git clone https://github.com/git/git
+
+const sequelize = new Sequelize('mysql://root:javalinux@localhost:3308/public', opts);
+git clone https://github.com/teamhide/graphql_mysql.git
