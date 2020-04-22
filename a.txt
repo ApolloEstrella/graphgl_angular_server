@@ -1,4 +1,4 @@
-mysql syntax for foreign key
+ mysql syntax for foreign key
 
 CREATE TABLE user ( id INT NOT NULL, name varchar(100) NOT NULL, PRIMARY KEY (id) ) ENGINE=INNODB
 

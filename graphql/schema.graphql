@@ -1,21 +1,30 @@
-type Status {
-    statusCode: Int!
-    message: String!
+type Author {
+    id: Int!
+    name: String!
+    email: String!
+    movies: [Movie!]! 
 }
 
-type Movies {
+type Movie {
     id: Int!
     name: String!
     score: Int!
+    author: Author!
 }
 
 type Query {
-    movies: [Movies]!
-    movie(id: Int!): Movies
+    movies: [Movie]!
+    movie(id: Int!): Movie
+    authors: [Author!]!
+    author(id: Int!): Author
+    allAuthors: [Author!]!
 }
 
 type Mutation {
-    createMovie(name: String!, score: Int!): Movies!
-    deleteMovie(id: Int!): Movies
-    updateMovie(id: Int!, name: String, score: Int): Movies
+    createMovie(id:Int, name: String, score: Int): Movie
+    deleteMovie(id: Int!): Movie
+    updateMovie(id: Int!, name: String, score: Int): Movie
 }
+
+
+

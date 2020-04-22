@@ -33,18 +33,42 @@ const MovieModel = sequelize.define('movie', {
     score: {
         type: Sequelize.INTEGER,
         allowNull: false
+    },
+    author_id: {
+        type: Sequelize.INTEGER
     }
 }, {
     tableName: 'movie',
     timestamps: false
 });
+
+const AuthorModel = sequelize.define('author', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    email: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+}, {
+    tableName: 'author',
+    timestamps: false
+}); 
+
+
 // Synchronize table
 //sequelize.sync({
 //    force: false,
 //})
 // Insert dummy data
 /* .then(() => MovieModel.create({
-    name: 'Star wars',
+    name: 'Star wars',   
     score: 4
 }))
 .then(() => MovieModel.create({
@@ -61,7 +85,9 @@ const MovieModel = sequelize.define('movie', {
 }))  */
 
 const Movies = sequelize.models.movie;
+const Authors = sequelize.models.author;
 
 module.exports = {
-    Movies: Movies
+    Movies: Movies,
+    Authors: Authors
 }
